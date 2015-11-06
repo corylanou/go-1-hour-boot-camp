@@ -1,6 +1,6 @@
 # Go 1 Hour Boot Camp
 
-This is a repo for a one hour bootcamp I gave at [http://chippewavalleycodecamp.com/](Chippewa Valley Code Camp).
+This is a repo for a one hour bootcamp I gave at [Chippewa Valley Code Camp](http://chippewavalleycodecamp.com/).
 
 You can view the presentation here: [http://bit.ly/cvcc-go](http://bit.ly/cvcc-go)
 
