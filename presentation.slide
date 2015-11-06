@@ -1,0 +1,168 @@
+Go: A One Hour Bootcamp
+14:00 07 Nov 2015
+Tags: go
+
+Cory LaNou
+Gopher - writes code daily for InfluxDB
+
+http://influxdb.com
+@corylanou
+
+* Companies using Go
+
+- Google / Facebook / Yahoo
+- Rackspace / Digital Ocean / Heroku
+- Shopify / Booking.com / Medium
+- IBM / Comcast / Canonical
+- Square
+- SendGrid / Bitly
+- Docker
+- Dropbox
+
+.link https://github.com/golang/go/wiki/GoUsers Companies using Go according to Go Wiki
+
+* so... why go?
+
+* Because we have an awesome mascott!
+
+.image code/intro/img/gopher.jpg
+
+* But seriously...
+
+- Go was created to make software engineering easier
+- Software needs to scale beyond machine scale, but at human scale as well
+
+* In the words of Andrew Gerrand
+
+- software _should_ be simple
+- software _can_ be simple
+
+* What Andrew means by "simple"
+
+- Small
+- Readable
+- Consistent
+- Orthogonal
+- Predictable
+- Robust
+- Useful by default
+
+* Go at a glance
+
+- Compiled
+- Statically typed
+- Clean syntax
+- Simple type system
+- Concurrency primitives
+- Rich standard library
+- Open source
+- Great Tools
+- Testing and Benchmarking
+
+
+* The "go" command
+
+- It's the primary tool for working with go projects
+- It runs tests
+- It runs benchmarks
+- It formats your code
+- and more...
+
+  build       compile packages and dependencies
+  clean       remove object files
+  env         print Go environment information
+  fix         run go tool fix on packages
+  fmt         run gofmt on package sources
+  get         download and install packages and dependencies
+  install     compile and install packages and dependencies
+  list        list packages
+  run         compile and run Go program
+  test        test packages
+  tool        run specified go tool
+  version     print Go version
+  vet         run go tool vet on packages
+
+
+
+* Hello, Go
+
+.play code/intro/hello.go
+
+* goroutines - first of two concurrency primitive
+
+Go routines are light weight threads that are managed by the Go runtime. 
+To run a function in a new go routine, just put "go" before the function call.
+
+.play code/intro/routine.go
+
+* channels - second concurrency primitive
+
+Channels are typed conduits for synchronization and communication between go routines.
+
+But we are not going to look at them today (there is no time)
+
+* net/http (1/2)
+
+The net/http package provides a HTTP client.
+
+.play code/intro/net_1.go /START OMIT/,/END OMIT/ 
+
+The client handles HTTP Keep-Alive using a pool of connections, by default. 
+(This is configurable, of course.)
+
+* net/http (2/2)
+
+The net/http package also provides an HTTP server.
+
+.play code/intro/net_2.go /START OMIT/,/END OMIT/ 
+
+This is a high-performance, DoS-hardened, production-ready web server.
+It serves dl.google.com
+
+* What tip would you give someone new to go?
+
+.image code/intro/img/matt_tweet.png
+
+* don’t try to compare it to java, c# or python 
+
+.image code/intro/img/dave_tweet.png
+
+* leave your object oriented brain at home. Embrace the interface.
+
+.image code/intro/img/mike_tweet.png
+
+* Getting Started
+
+- Take the tour!
+
+.link http://tour.golang.org tour.golang.org
+
+- Read effective go
+
+.link http://golang.org/doc/effective_go.html 
+
+* How to get help
+
+- Create a code example: 
+
+.link http://play.golang.org play.golang.org
+
+- Share the example:
+
+.link https://forum.golangbridge.org/ Go Forums
+.link http://bit.ly/go-slack-signup Gopher Slack Signup (free)
+.link https://plus.google.com/communities/114112804251407510571 g+ Go Community
+.link https://groups.google.com/forum/#!forum/golang-nutsk  go-nuts mailing list
+
+If all else fails, you can use twitter to reach out to me @corylanou.
+
+* References
+
+Many of the example slides in the presentation are based on or directly from:
+
+.link https://speakerdeck.com/railsberry/go-a-simple-programming-environment-by-andrew-gerrand Andrew Gerrand's Railsberry Presentation
+
+
+
+
+
