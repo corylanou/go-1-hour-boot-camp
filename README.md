@@ -6,6 +6,10 @@ You can view the presentation here: [http://bit.ly/cvcc-go](http://bit.ly/cvcc-g
 
 The major components involved are:
 
+## Why Go?
+
+Give a brief overiew of why Go was created, who is using it, and some language overview.
+
 ## Installing Go
 
 This is a quick start guide to show you how to install Go, and write your first Hello World program.
