@@ -8,6 +8,22 @@ Gopher - writes code daily for InfluxDB
 http://influxdb.com
 @corylanou
 
+* Get on Gopher Slack
+
+.link http://bit.ly/go-slack-signup http://bit.ly/go-slack-signup
+
+After Signing Up:
+
+.link https://gophers.slack.com/messages/training/ https://gophers.slack.com/messages/training/
+
+We will use the training channel to share links for the bootcamp.
+
+* Where can I find this slide deck?
+
+This slide deck can be found here:
+
+.link http://go-talks.appspot.com/github.com/corylanou/go-1-hour-boot-camp/presentation.slide http://go-talks.appspot.com/github.com/corylanou/go-1-hour-boot-camp/presentation.slide
+
 * Companies using Go
 
 - Google / Facebook / Yahoo
@@ -32,6 +48,8 @@ http://influxdb.com
 - Go was created to make software engineering easier
 - Software needs to scale beyond machine scale, but at human scale as well
 
+Think of a company that employs over 20,000 software engineers like Google!
+
 * In the words of Andrew Gerrand
 
 - software _should_ be simple
@@ -46,6 +64,8 @@ http://influxdb.com
 - Predictable
 - Robust
 - Useful by default
+
+NOTE: For computing, _orthognal_ means isolated or partitioned.
 
 * Go at a glance
 
@@ -130,6 +150,24 @@ It serves dl.google.com
 * leave your object oriented brain at home. Embrace the interface.
 
 .image code/intro/img/mike_tweet.png
+
+* Go Editors
+
+.link https://atom.io/ ATOM
+.link http://www.sublimetext.com/ Sublime Text
+
+Both have Go Plugins
+
+.link https://atom.io/packages/go-plus ATOM go-plus
+.link https://github.com/DisposaBoy/GoSublime GoSublime
+
+And my favorite if you are a VIM user:
+
+.link https://github.com/fatih/vim-go
+
+For simple programs or examples:
+
+.link http://play.golang.org Go Playground
 
 * Installing Go
 
@@ -270,6 +308,115 @@ You will now have a file called `cli` that is an executable.  To run that, issue
 
 	./cli -cmd=hello
 
+* Concurrency
+
+In this example, we will cover the basics of working concurrently.
+
+.link https://www.youtube.com/watch?v=cN_DpYBzKso Rob Pike - 'Concurrency Is Not Parallelism'
+
+* Retrieving Websites
+
+Sometimes, we need to do a lot of operations that will take an unkown length of time.
+We want to do this as fast and effeciently as possible, so we can use Go's built in concurrecy.
+
+* The problem
+
+To keep things simple, let's pretend we have a list of websites we want to monitor response times.
+
+* Basic CLI
+
+We will start with a basic command line program that accepts arguments as the websites to retrieve.
+
+.code code/concurrency/monitor.go
+
+* Running the code
+
+Running this program with the following arguments:
+
+	go run monitor.go http://google.com http://yahoo.com
+
+You will see that we output the following:
+
+	[http://google.com http://yahoo.com]
+
+* Retrieving and recording response times
+
+Now we want to retrieve them and record response times.
+
+* code - imports
+
+.code code/concurrency/monitor1.go /START IMPORT-OMIT/,/END IMPORT-OMIT/
+
+
+* code - main
+
+.code code/concurrency/monitor1.go /START MAIN-OMIT/,/END MAIN-OMIT/
+
+
+* code - process
+
+.code code/concurrency/monitor1.go /START PROCESS-OMIT/,/END PROCESS-OMIT/
+
+
+* Running the code
+
+Now run the program:
+
+	go run monitor.go http://google.com http://yahoo.com
+
+Times may vary, but this is the output I received:
+
+	0) Site "http://google.com" took 655.376187ms to retrieve with status code of 200.
+	1) Site "http://yahoo.com" took 1.476497651s to retrieve with status code of 200.
+	Entire process took 2.131954134s
+
+* Make it concurrent
+
+Ok, as we can see, we should be able to speed this up quite a bit by making the program concurrent.
+
+Make the following changes:
+
+* code - imports
+
+.code code/concurrency/monitor2.go /START IMPORT-OMIT/,/END IMPORT-OMIT/
+
+
+* code - main
+
+.code code/concurrency/monitor2.go /START MAIN-OMIT/,/END MAIN-OMIT/
+
+
+* code - process
+
+.code code/concurrency/monitor2.go /START PROCESS-OMIT/,/END PROCESS-OMIT/
+
+* Run it again:
+
+	go run monitor.go http://google.com http://yahoo.com
+
+Now you should see an output something like this when you run it:
+
+	1) Site "http://yahoo.com" took 779.603401ms to retrieve with status code of 200.
+	0) Site "http://google.com" took 1.129924548s to retrieve with status code of 200.
+	Entire process took 1.129966611s
+
+Notice how it not only takes slightly longer than the longest request?  This is due to everything running concurrently.
+
+The big difference with the final program is the use of a *WaitGroup* and launching everything inside of a go routine by using the *go*func* signature.
+
+You can read more on wait groups here:
+
+.link http://golang.org/pkg/sync Sync Package
+
+* Running 100 sites
+
+Running 100 sites concurrently, I received this result:
+
+.link https://gist.githubusercontent.com/corylanou/be1f71005b475423ba52/raw/ea0d03045b9b39b09608adaba0079e1903ea7248/gistfile1.txt results
+
+* Summary
+
+Congratulations, you just wrote your first concurrenty program!
 
 * Your first Web Server
 
@@ -293,13 +440,13 @@ To run this issue the following command:
 
 	go run website.go
 
-Then open web browser on 
+Then open a  web browser on
 
 .link http://localhost:8080 http://localhost:8080
 
 As you can see, we are just writing out a basic "Hello world" followed by the path.
 
-Now go to this url: 
+Now go to this url:
 
 .link http://localhost:8080/foo http://localhost:8080/foo
 
@@ -374,114 +521,6 @@ Now open web browser on:
 
 .link http://localhost:8080 http://localhost:8080
 
-* Concurrency
-
-In this example, we will cover the basics of working concurrently.
-
-* Retrieving Websites
-
-Sometimes, we need to do a lot of operations that will take an unkown length of time.
-We want to do this as fast and effeciently as possible, so we can use Go's built in concurrecy.
-
-* The problem
-
-To keep things simple, let's pretend we have a list of websites we want to monitor response times.
-
-* Basic CLI
-
-We will start with a basic command line program that accepts arguments as the websites to retrieve.
-
-.code code/concurrency/monitor.go
-
-* Running the code
-
-Running this program with the following arguments:
-
-	go run monitor.go http://google.com http://yahoo.com
-
-You will see that we output the following:
-
-	[http://google.com http://yahoo.com]
-
-* Retrieving and recording response times
-
-Now we want to retrieve them and record response times.
-
-* code - imports
-
-.code code/concurrency/monitor1.go /START IMPORT-OMIT/,/END IMPORT-OMIT/
-
-
-* code - main
-
-.code code/concurrency/monitor1.go /START MAIN-OMIT/,/END MAIN-OMIT/
-
-
-* code - process
-
-.code code/concurrency/monitor1.go /START PROCESS-OMIT/,/END PROCESS-OMIT/
-
-
-* Running the code
-
-Now run the program:
-
-	go run monitor.go http://google.com http://yahoo.com
-
-Times may vary, but this is the output I received:
-
-	Site "http://google.com" took 119.178774ms to retrieve.
-	Site "http://yahoo.com" took 581.01092ms to retrieve.
-	Entire process took 700.245713ms
-
-* Make it concurrent
-
-Ok, as we can see, we should be able to speed this up quite a bit by making the program concurrent.
-
-Make the following changes:
-
-* code - imports
-
-.code code/concurrency/monitor2.go /START IMPORT-OMIT/,/END IMPORT-OMIT/
-
-
-* code - main
-
-.code code/concurrency/monitor2.go /START MAIN-OMIT/,/END MAIN-OMIT/
-
-
-* code - process
-
-.code code/concurrency/monitor2.go /START PROCESS-OMIT/,/END PROCESS-OMIT/
-
-* Run it again:
-
-	go run monitor.go http://google.com http://yahoo.com
-
-Now you should see an output something like this when you run it:
-
-	Site "http://google.com" took 131.805645ms to retrieve.
-	Site "http://yahoo.com" took 541.624279ms to retrieve.
-	Entire process took 541.743794ms
-
-Notice how it not only takes slightly longer than the longest request?  This is due to everything running concurrently.
-
-The big difference with the final program is the use of a *WaitGroup* and launching everything inside of a go routine by using the *go func* signature.
-
-You can read more on wait groups here:
-
-.link http://golang.org/pkg/sync Sync Package
-
-* Running 100 sites
-
-Running 100 sites concurrently, I received this result:
-
-.link https://gist.github.com/corylanou/be1f71005b475423ba52 results
-
-* Summary
-
-Congratulations, you just wrote your first concurrenty program!
-
 * Learning more
 
 - Take the tour!
@@ -505,7 +544,9 @@ Congratulations, you just wrote your first concurrenty program!
 .link https://plus.google.com/communities/114112804251407510571 g+ Go Community
 .link https://groups.google.com/forum/#!forum/golang-nutsk  go-nuts mailing list
 
-If all else fails, you can use twitter to reach out to me @corylanou.
+If all else fails, you can use twitter to reach out to me on twitter at:
+
+.link http://twiter.com/corylanou @corylanou
 
 * References
 

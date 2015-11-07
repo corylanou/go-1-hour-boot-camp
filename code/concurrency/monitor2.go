@@ -40,22 +40,23 @@ func main() {
 
 // START PROCESS-OMIT
 func processSites(sites []string, wg *sync.WaitGroup) {
-	for _, site := range sites {
+	for i, site := range sites {
 		// Launch each retrieval in a go routine.  This makes each request concurrent
-		go func(site string) {
+		go func(index int, site string) {
 			defer wg.Done()
 
 			// start a timer for this request
 			begin := time.Now()
 
 			// Retrieve the site
-			if _, err := http.Get(site); err != nil {
+			resp, err := http.Get(site)
+			if err != nil {
 				fmt.Println(site, err)
 				return
 			}
 
-			fmt.Printf("Site %q took %s to retrieve.\n", site, time.Since(begin))
-		}(site)
+			fmt.Printf("%d) Site %q took %s to retrieve with status code of %d.\n", index, site, time.Since(begin), resp.StatusCode)
+		}(i, site)
 	}
 }
 
