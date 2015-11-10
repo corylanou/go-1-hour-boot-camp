@@ -73,7 +73,7 @@ Think of a company that employs over 20,000 software engineers like Google!
 - Robust
 - Useful by default
 
-NOTE: For computing, _orthognal_ means isolated or partitioned.
+NOTE: For computing, _orthogonal_ means isolated or partitioned.
 
 * Go at a glance
 
@@ -236,7 +236,7 @@ Add a new *User* Variable (not a system variable)
 
 * Your first Go program
 
-Ok, now it's time to create our first go program.  To do so, create a file called *hello.go* with your preferred text editor, and add the following content:
+OK, now it's time to create our first go program.  To do so, create a file called *hello.go* with your preferred text editor, and add the following content:
 
 .play code/installing/hello.go
 
@@ -268,7 +268,7 @@ In this example, we will cover the basic concepts command line arguments using t
 
 In our first cli program, we will see what we get out of the box with very little effort.
 
-Createa a file  called `cli.go`
+Create a file  called `cli.go`
 
 * cli.go Contents
 
@@ -301,7 +301,7 @@ Now you should see that it prints
 
 This method allows us to tell the flag package to look for specific argument names, in this case, `cmd`.
 
-For more information, see the documenation:
+For more information, see the documentation:
 
 .link http://golang.org/pkg/flag/#FlagSet.StringVar StringVar
 
@@ -324,8 +324,8 @@ In this example, we will cover the basics of working concurrently.
 
 * Retrieving Websites
 
-Sometimes, we need to do a lot of operations that will take an unkown length of time.
-We want to do this as fast and effeciently as possible, so we can use Go's built in concurrecy.
+Sometimes, we need to do a lot of operations that will take an unknown length of time.
+We want to do this as fast and efficiently as possible, so we can use Go's built in concurrency.
 
 * The problem
 
@@ -424,19 +424,19 @@ Running 100 sites concurrently, I received this result:
 
 * Summary
 
-Congratulations, you just wrote your first concurrenty program!
+Congratulations, you just wrote your first concurrent program!
 
 * Your first Web Server
 
 In this example, we will cover the following basics:
 
-- Spin up a webserver
+- Spin up a web server
 - Basic Routing
 - Your first template
 
 * Basic web server
 
-The first thing we are going to do is run a webserver. We can do this in just a few lines of code.
+The first thing we are going to do is run a web server. We can do this in just a few lines of code.
 
 Create a file  called `webserver.go` and add the following contents:
 
@@ -446,7 +446,7 @@ Create a file  called `webserver.go` and add the following contents:
 
 To run this issue the following command:
 
-	go run website.go
+	go run webserver.go
 
 Then open a  web browser on
 
@@ -460,7 +460,7 @@ Now go to this url:
 
 * Routing
 
-Notice this webserver will respond to any route you give it.  We really don't want that so let's change the code to add some basic routing.
+Notice this web server will respond to any route you give it.  We really don't want that so let's change the code to add some basic routing.
 
 * Routing - the code - imports
 
@@ -561,8 +561,3 @@ If all else fails, you can use twitter to reach out to me on twitter at:
 Many of the example slides in the presentation are based on or directly from:
 
 .link https://speakerdeck.com/railsberry/go-a-simple-programming-environment-by-andrew-gerrand Andrew Gerrand's Railsberry Presentation
-
-
-
-
-
