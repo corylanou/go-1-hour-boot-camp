@@ -326,6 +326,9 @@ Cross compile from a Mac to Windows:
 	GOOS=windows GOARCH=amd64 go build cli.go
 
 .link https://golang.org/doc/install/source#environment Environment Variables
+
+.link http://dave.cheney.net/2015/08/22/cross-compilation-with-go-1-5 Dave Cheney: How to Cross Compile
+
 * Concurrency
 
 In this example, we will cover the basics of working concurrently.
