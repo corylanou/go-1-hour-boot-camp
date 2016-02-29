@@ -1,16 +1,16 @@
 Go: A One Hour Bootcamp
-14:00 07 Nov 2015
+18:30 01 Mar 2016
 Tags: go
 
 Cory LaNou
 Gopher - writes code daily for InfluxDB
 
-http://influxdb.com
+http://influxdata.com
 @corylanou
 
 * Get on Gopher Slack
 
-.link http://bit.ly/go-slack-signup http://bit.ly/go-slack-signup
+.link https://gophersinvite.herokuapp.com/ https://gophersinvite.herokuapp.com/
 
 After Signing Up:
 
@@ -20,7 +20,7 @@ We will use the training channel to share links for the bootcamp.
 
 * Join your local Go Meetup!
 
-.link http://www.meetup.com/Chippewa-Valley-Gophers/ Chippewa Valley Gophers
+.link http://www.meetup.com/Minneapolis-Hardcore-Golang Minneapolis Hardcore Golang
 
 * Where can I find this slide deck?
 
@@ -316,6 +316,16 @@ You will now have a file called `cli` that is an executable.  To run that, issue
 
 	./cli -cmd=hello
 
+* Cross Compiling a Binary
+
+- set GOOS and GOARCH to be the values for the target operating system and architecture.
+- run go build -v YOURPACKAGE
+
+Cross compile from a Mac to Windows:
+
+	GOOS=windows GOARCH=amd64 go build cli.go
+
+.link https://golang.org/doc/install/source#environment Environment Variables
 * Concurrency
 
 In this example, we will cover the basics of working concurrently.
