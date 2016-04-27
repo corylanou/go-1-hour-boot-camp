@@ -1,6 +1,6 @@
 Go: A One Hour Bootcamp
-18:30 27 Mar 2016
-Tags: go, influxdata
+18:30 01 Mar 2016
+Tags: go
 
 Cory LaNou
 Gopher - writes code daily for InfluxDB
@@ -20,7 +20,12 @@ We will use the training channel to share links for the bootcamp.
 
 * Join your local Go Meetup!
 
-.link http://www.meetup.com/golangsf/ GoSF
+.link http://www.meetup.com/golangmn/ GoMN
+.link http://www.meetup.com/Minneapolis-Hardcore-Golang Minneapolis Hardcore Golang
+
+Additional Resources
+
+.link http://bit.ly/minneapolis-golang Minneapolis Golang Document (Jobs, Trainging, Events, etc)
 
 * Where can I find this slide deck?
 
@@ -34,7 +39,6 @@ The repo for the presentation is here:
 
 * Companies using Go
 
-- InfluxData
 - Google / Facebook / Yahoo
 - Rackspace / Digital Ocean / Heroku
 - Shopify / Booking.com / Medium
@@ -58,19 +62,6 @@ The repo for the presentation is here:
 - Software needs to scale beyond machine scale, but at human scale as well
 
 Think of a company that employs over 20,000 software engineers like Google!
-
-* Do the math
-
-- Compile/Test Time 65 minutes vs. 5 minutes (1 hour saving)
-- Compiles/Tests once per day
-- Works on code 40 weeks out of the year
-- 40 hours per year per employee spent compiling.
-- Average $100/hour employee cost = $40,0000
-- Now, if you have 20,000 employees... 
-
-* Cost savings of...
-
-$800,000,000 annually!
 
 * In the words of Andrew Gerrand
 
@@ -130,14 +121,48 @@ NOTE: For computing, _orthogonal_ means isolated or partitioned.
 
 .play code/intro/hello.go
 
-* net/http
+* goroutines - first of two concurrency primitive
 
-The net/http package provides an HTTP server.
+Go routines are light weight threads that are managed by the Go runtime. 
+To run a function in a new go routine, just put "go" before the function call.
+
+.play code/intro/routine.go
+
+* channels - second concurrency primitive
+
+Channels are typed conduits for synchronization and communication between go routines.
+
+But we are not going to look at them today (there is no time)
+
+* net/http (1/2)
+
+The net/http package provides a HTTP client.
+
+.play code/intro/net_1.go /START OMIT/,/END OMIT/ 
+
+The client handles HTTP Keep-Alive using a pool of connections, by default. 
+(This is configurable, of course.)
+
+* net/http (2/2)
+
+The net/http package also provides an HTTP server.
 
 .play code/intro/net_2.go /START OMIT/,/END OMIT/ 
 
 This is a high-performance, DoS-hardened, production-ready web server.
 It serves dl.google.com
+
+* What tip would you give someone new to go?
+
+.image code/intro/img/matt_tweet.png
+
+* don’t try to compare it to java, c# or python 
+
+.image code/intro/img/dave_tweet.png
+
+* leave your object oriented brain at home. Embrace the interface.
+
+.image code/intro/img/mike_tweet.png
 
 * Go Editors
 
@@ -231,6 +256,7 @@ If you see the "hello, world" message then your Go installation is working.
 
 .link golang.org/doc/install http://golang.org/doc/install
 
+
 * Summary
 
 Congratulations, you can now write more Go code!
@@ -313,9 +339,6 @@ Cross compile from a Mac to Windows:
 In this example, we will cover the basics of working concurrently.
 
 .link https://www.youtube.com/watch?v=cN_DpYBzKso Rob Pike - 'Concurrency Is Not Parallelism'
-
-- Concurrency is about dealing with lots of things at once.
-- Parallelism is about doing lots of things at once.
 
 * Retrieving Websites
 
@@ -533,18 +556,6 @@ Now open web browser on:
 - Read effective go
 
 .link http://golang.org/doc/effective_go.html 
-
-- Contribute to Open Source Go Projects
-
-.link https://github.com/corylanou/oss-helpwanted Open Source Help Wanted
-
-* Learning more (continued)
-
-Web specific resources:
-
-.link http://thenewstack.io/make-a-restful-json-api-go/ Making a RESTful JSON API in Go
-
-.link https://www.gitbook.com/book/gobridge/building-web-apps-with-go/details Building Web Apps with Go
 
 * How to get help
 
