@@ -1,0 +1,572 @@
+Go: A One Hour Bootcamp
+18:30 27 Apr 2016
+Tags: go, influxdata
+
+Cory LaNou
+Gopher - writes code daily for InfluxDB
+
+http://influxdata.com
+@corylanou
+
+* Get on Gopher Slack
+
+.link https://gophersinvite.herokuapp.com/ https://gophersinvite.herokuapp.com/
+
+: this is a note
+
+After Signing Up:
+
+.link https://gophers.slack.com/messages/training/ https://gophers.slack.com/messages/training/
+
+We will use the training channel to share links for the bootcamp.
+
+* Join your local Go Meetup!
+
+.link http://www.meetup.com/golangsf/ GoSF
+
+* Where can I find this slide deck?
+
+This slide deck can be found here:
+
+.link http://go-talks.appspot.com/github.com/corylanou/go-1-hour-boot-camp/presentation.slide http://go-talks.appspot.com/github.com/corylanou/go-1-hour-boot-camp/presentation.slide
+
+The repo for the presentation is here:
+
+.link https://github.com/corylanou/go-1-hour-boot-camp https://github.com/corylanou/go-1-hour-boot-camp
+
+* Companies using Go
+
+- InfluxData
+- Google / Facebook / Yahoo
+- Rackspace / Digital Ocean / Heroku
+- Shopify / Booking.com / Medium
+- IBM / Comcast / Canonical
+- Square
+- SendGrid / Bitly
+- Docker
+- Dropbox
+
+.link https://github.com/golang/go/wiki/GoUsers Companies using Go according to Go Wiki
+
+* so... why go?
+
+* Because we have an awesome mascot!
+
+.image code/intro/img/gopher.jpg
+
+* But seriously...
+
+- Go was created to make software engineering easier
+- Software needs to scale beyond machine scale, but at human scale as well
+
+Think of a company that employs over 20,000 software engineers like Google!
+
+* Do the math
+
+- Compile/Test Time 65 minutes vs. 5 minutes (1 hour saving)
+- Compiles/Tests once per day
+- Works on code 40 weeks out of the year
+- 40 hours per year per employee spent compiling.
+- Average $100/hour employee cost = $40,0000
+- Now, if you have 20,000 employees... 
+
+* Cost savings of...
+
+$800,000,000 annually!
+
+* In the words of Andrew Gerrand
+
+- software _should_ be simple
+- software _can_ be simple
+
+* What Andrew means by "simple"
+
+- Small
+- Readable
+- Consistent
+- Orthogonal
+- Predictable
+- Robust
+- Useful by default
+
+NOTE: For computing, _orthogonal_ means isolated or partitioned.
+
+* Go at a glance
+
+- Compiled
+- Statically typed
+- Clean syntax
+- Simple type system
+- Concurrency primitives
+- Rich standard library
+- Open source
+- Great Tools
+- Testing and Benchmarking
+
+
+* The "go" command
+
+- It's the primary tool for working with go projects
+- It runs tests
+- It runs benchmarks
+- It formats your code
+- and more...
+
+  build       compile packages and dependencies
+  clean       remove object files
+  env         print Go environment information
+  fix         run go tool fix on packages
+  fmt         run gofmt on package sources
+  get         download and install packages and dependencies
+  install     compile and install packages and dependencies
+  list        list packages
+  run         compile and run Go program
+  test        test packages
+  tool        run specified go tool
+  version     print Go version
+  vet         run go tool vet on packages
+
+
+
+* Hello, Go
+
+.play code/intro/hello.go
+
+* net/http
+
+The net/http package provides an HTTP server.
+
+.play code/intro/net_2.go /START OMIT/,/END OMIT/ 
+
+This is a high-performance, DoS-hardened, production-ready web server.
+It serves dl.google.com
+
+* Go Editors
+
+.link https://atom.io/ ATOM
+.link http://www.sublimetext.com/ Sublime Text
+
+Both have Go Plugins
+
+.link https://atom.io/packages/go-plus ATOM go-plus
+.link https://github.com/DisposaBoy/GoSublime GoSublime
+
+And my favorite if you are a VIM user:
+
+.link https://github.com/fatih/vim-go
+
+For simple programs or examples:
+
+.link http://play.golang.org Go Playground
+
+* Installing Go
+
+Installing Go is a very simple process, but if you want the entire set of tools, it can be more complicated.
+
+We will cover just the basic installation in this boot camp.
+
+* What Operating System?
+
+Go can run natively on most operating systems, including Windows, Mac, and Linux.
+
+* Mac
+
+The quickest way to install on the mac is to use `HomeBrew`.
+
+If you don't have *HomeBrew* you can install it easily with this line:
+
+	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+Once it is installed, simply run these commands:
+
+	brew update
+	brew install go
+
+* Windows and Linux
+
+You can download installers for all operating systems (Including Mac), including Windows, here:
+
+.link http://golang.org/dl/ http://golang.org/dl/
+
+* Setting up your Environment
+
+Go requires you to set the  *GOPATH* for the compiler to work properly.
+
+* GOPATH on Mac or Linux
+
+	mkdir $HOME/go
+	export GOPATH=$HOME/go
+
+In depth details on *GOPATH* can be found here:
+
+.link https://code.google.com/p/go-wiki/wiki/GOPATH https://code.google.com/p/go-wiki/wiki/GOPATH
+
+* GOPATH on  Windows
+
+From a command prompt:
+
+	mkdir "%USERPROFILE%\go"
+
+Go to the Control Panel > System > Advanced Tab > Environment Variables.
+
+Add a new *User* Variable (not a system variable)
+
+	Variable name: GOPATH
+	Variable value: %USERPROFILE%\go
+
+*NOTE:* You may need to reboot for this variable to take effect.
+
+* Your first Go program
+
+OK, now it's time to create our first go program.  To do so, create a file called *hello.go* with your preferred text editor, and add the following content:
+
+.play code/installing/hello.go
+
+To run it, use the following command:
+
+	$ go run hello.go
+	hello, world
+
+If you see the "hello, world" message then your Go installation is working.
+
+*NOTE:* This was taken directly from:
+
+.link golang.org/doc/install http://golang.org/doc/install
+
+* Summary
+
+Congratulations, you can now write more Go code!
+
+* Basic Command Line Program (CLI)
+
+Go allows you to quickly and easily create a command line program.
+
+In this example, we will cover the basic concepts command line arguments using the flags package.
+
+.link http://golang.org/pkg/flag/ Flags Package
+
+* Simple CLI
+
+In our first cli program, we will see what we get out of the box with very little effort.
+
+Create a file  called `cli.go`
+
+* cli.go Contents
+
+.play code/cli/basic.go
+
+* Running the program
+
+To run the program, issue this command:
+
+	go run cli.go
+
+You should get something like this:
+
+	Usage of /var/folders/l7/3s7z7s1s4n72lvj4w6g_fdmm0000gn/T/go-build844850686/command-line-arguments/_obj/exe/basic:
+	  -cmd="": cmd can be either "hello" or "bye"
+
+* Breaking it down.
+
+As you can see, if we don't provide any arguments, it prints out the `Usage` of the program.
+
+Let's pass it an argument:
+
+	go run cli.go -cmd=hello
+
+Now you should see that it prints 
+
+	Hello!
+
+* flag.StringVar
+
+This method allows us to tell the flag package to look for specific argument names, in this case, `cmd`.
+
+For more information, see the documentation:
+
+.link http://golang.org/pkg/flag/#FlagSet.StringVar StringVar
+
+
+* Compiling a binary
+
+But wait, what if I want to actually compile the binary?  Easy enough, run this command:
+
+	go build cli.go
+
+You will now have a file called `cli` that is an executable.  To run that, issue this command:
+
+	./cli -cmd=hello
+
+* Cross Compiling a Binary
+
+- set GOOS and GOARCH to be the values for the target operating system and architecture.
+- run go build -v YOURPACKAGE
+
+Cross compile from a Mac to Windows:
+
+	GOOS=windows GOARCH=amd64 go build cli.go
+
+.link https://golang.org/doc/install/source#environment Environment Variables
+
+.link http://dave.cheney.net/2015/08/22/cross-compilation-with-go-1-5 Dave Cheney: How to Cross Compile
+
+* Concurrency
+
+In this example, we will cover the basics of working concurrently.
+
+.link https://www.youtube.com/watch?v=cN_DpYBzKso Rob Pike - 'Concurrency Is Not Parallelism'
+
+- Concurrency is about dealing with lots of things at once.
+- Parallelism is about doing lots of things at once.
+
+* Retrieving Websites
+
+Sometimes, we need to do a lot of operations that will take an unknown length of time.
+We want to do this as fast and efficiently as possible, so we can use Go's built in concurrency.
+
+* The problem
+
+To keep things simple, let's pretend we have a list of websites we want to monitor response times.
+
+* Basic CLI
+
+We will start with a basic command line program that accepts arguments as the websites to retrieve.
+
+.code code/concurrency/monitor.go
+
+* Running the code
+
+Running this program with the following arguments:
+
+	go run monitor.go http://google.com http://yahoo.com
+
+You will see that we output the following:
+
+	[http://google.com http://yahoo.com]
+
+* Retrieving and recording response times
+
+Now we want to retrieve them and record response times.
+
+* code - imports
+
+.code code/concurrency/monitor1.go /START IMPORT-OMIT/,/END IMPORT-OMIT/
+
+
+* code - main
+
+.code code/concurrency/monitor1.go /START MAIN-OMIT/,/END MAIN-OMIT/
+
+
+* code - process
+
+.code code/concurrency/monitor1.go /START PROCESS-OMIT/,/END PROCESS-OMIT/
+
+
+* Running the code
+
+Now run the program:
+
+	go run monitor.go http://google.com http://yahoo.com
+
+Times may vary, but this is the output I received:
+
+	0) Site "http://google.com" took 655.376187ms to retrieve with status code of 200.
+	1) Site "http://yahoo.com" took 1.476497651s to retrieve with status code of 200.
+	Entire process took 2.131954134s
+
+* Make it concurrent
+
+Ok, as we can see, we should be able to speed this up quite a bit by making the program concurrent.
+
+Make the following changes:
+
+* code - imports
+
+.code code/concurrency/monitor2.go /START IMPORT-OMIT/,/END IMPORT-OMIT/
+
+
+* code - main
+
+.code code/concurrency/monitor2.go /START MAIN-OMIT/,/END MAIN-OMIT/
+
+
+* code - process
+
+.code code/concurrency/monitor2.go /START PROCESS-OMIT/,/END PROCESS-OMIT/
+
+* Run it again:
+
+	go run monitor.go http://google.com http://yahoo.com
+
+Now you should see an output something like this when you run it:
+
+	1) Site "http://yahoo.com" took 779.603401ms to retrieve with status code of 200.
+	0) Site "http://google.com" took 1.129924548s to retrieve with status code of 200.
+	Entire process took 1.129966611s
+
+Notice how it not only takes slightly longer than the longest request?  This is due to everything running concurrently.
+
+The big difference with the final program is the use of a *WaitGroup* and launching everything inside of a go routine by using the *go*func* signature.
+
+You can read more on wait groups here:
+
+.link http://golang.org/pkg/sync Sync Package
+
+* Running 100 sites
+
+Running 100 sites concurrently, I received this result:
+
+.link https://gist.githubusercontent.com/corylanou/be1f71005b475423ba52/raw/ea0d03045b9b39b09608adaba0079e1903ea7248/gistfile1.txt results
+
+* Summary
+
+Congratulations, you just wrote your first concurrent program!
+
+* Your first Web Server
+
+In this example, we will cover the following basics:
+
+- Spin up a web server
+- Basic Routing
+- Your first template
+
+* Basic web server
+
+The first thing we are going to do is run a web server. We can do this in just a few lines of code.
+
+Create a file  called `webserver.go` and add the following contents:
+
+.play code/http/webserver.go
+
+* Running the code
+
+To run this issue the following command:
+
+	go run webserver.go
+
+Then open a  web browser on
+
+.link http://localhost:8080 http://localhost:8080
+
+As you can see, we are just writing out a basic "Hello world" followed by the path.
+
+Now go to this url:
+
+.link http://localhost:8080/foo http://localhost:8080/foo
+
+* Routing
+
+Notice this web server will respond to any route you give it.  We really don't want that so let's change the code to add some basic routing.
+
+* Routing - the code - imports
+
+.code code/http/webserver1.go /START IMPORT-OMIT/,/END IMPORT-OMIT/
+
+
+* Routing - the code - functions
+
+.play code/http/webserver1.go /START FUNCTIONS-OMIT/,/END FUNCTIONS-OMIT/
+
+* External Packages
+
+You will notice that we are using our first *external* package called *github.com/gorilla/mux*.
+
+To make sure this is on your computer and allow the program to compile you need to *get* it with the following command:
+
+	go get github.com/gorilla/mux
+
+* Running with routing
+
+Now, we can fire up the server again:
+
+	go run website.go
+
+Now open web browser on:
+
+.link http://localhost:8080 http://localhost:8080
+
+As you can see nothing new is really going on.
+
+However, if you go to: 
+
+.link http://localhost:8080/foo http://localhost:8080/foo
+
+You now get a page not found, as we expected.
+
+* Templates
+
+Now we need to make a basic template.  To do so, we will use the *html/template* package:
+
+.link http://golang.org/pkg/html/template/ html/template
+
+* Templates - the code - imports
+
+.code code/http/webserver2.go /START IMPORT-OMIT/,/END IMPORT-OMIT/
+
+* Templates - the code - main
+
+.code code/http/webserver2.go /START FUNCTIONS-M-OMIT/,/END FUNCTIONS-M-OMIT/
+
+* Templates - the code - index
+
+.code code/http/webserver2.go /START FUNCTIONS-I-OMIT/,/END FUNCTIONS-I-OMIT/
+
+* Templates - the code - types and consts
+
+.code code/http/webserver2.go /START TC-OMIT/,/END TC-OMIT/
+
+* Templates - the code - render
+
+.play code/http/webserver2.go /START FUNCTIONS-R-OMIT/,/END FUNCTIONS-R-OMIT/
+
+* Running the template code
+
+Now open web browser on:
+
+.link http://localhost:8080 http://localhost:8080
+
+* Learning more
+
+- Take the tour!
+
+.link http://tour.golang.org tour.golang.org
+
+- Read effective go
+
+.link http://golang.org/doc/effective_go.html 
+
+- Contribute to Open Source Go Projects
+
+.link https://github.com/corylanou/oss-helpwanted Open Source Help Wanted
+
+* Learning more (continued)
+
+Web specific resources:
+
+.link http://thenewstack.io/make-a-restful-json-api-go/ Making a RESTful JSON API in Go
+
+.link https://www.gitbook.com/book/gobridge/building-web-apps-with-go/details Building Web Apps with Go
+
+* How to get help
+
+- Create a code example: 
+
+.link http://play.golang.org play.golang.org
+
+- Share the example:
+
+.link https://forum.golangbridge.org/ Go Forums
+.link http://bit.ly/go-slack-signup Gopher Slack Signup (free)
+.link https://plus.google.com/communities/114112804251407510571 g+ Go Community
+.link https://groups.google.com/forum/#!forum/golang-nutsk  go-nuts mailing list
+
+If all else fails, you can use twitter to reach out to me on twitter at:
+
+.link http://twiter.com/corylanou @corylanou
+
+* References
+
+Many of the example slides in the presentation are based on or directly from:
+
+.link https://speakerdeck.com/railsberry/go-a-simple-programming-environment-by-andrew-gerrand Andrew Gerrand's Railsberry Presentation
