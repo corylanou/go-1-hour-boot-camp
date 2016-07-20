@@ -1,5 +1,5 @@
 Go: A One Hour Bootcamp
-18:30 27 Apr 2016
+18:30 20 Jul 2016
 Tags: go, influxdata
 
 Cory LaNou
@@ -22,7 +22,7 @@ We will use the training channel to share links for the bootcamp.
 
 * Join your local Go Meetup!
 
-.link http://www.meetup.com/golangsf/ GoSF
+.link http://www.meetup.com/Minneapolis-Ultimate-Golang/ Minneapolis Ultimate Golang
 
 * Where can I find this slide deck?
 
@@ -107,26 +107,23 @@ NOTE: For computing, _orthogonal_ means isolated or partitioned.
 * The "go" command
 
 - It's the primary tool for working with go projects
-- It runs tests
-- It runs benchmarks
-- It formats your code
-- and more...
+- It runs tests, benchmarks, formats your code and more...
 
-  build       compile packages and dependencies
-  clean       remove object files
-  env         print Go environment information
-  fix         run go tool fix on packages
-  fmt         run gofmt on package sources
-  get         download and install packages and dependencies
-  install     compile and install packages and dependencies
-  list        list packages
-  run         compile and run Go program
-  test        test packages
-  tool        run specified go tool
-  version     print Go version
-  vet         run go tool vet on packages
-
-
+	build       compile packages and dependencies
+	clean       remove object files
+	doc         show documentation for package or symbol
+	env         print Go environment information
+	fix         run go tool fix on packages
+	fmt         run gofmt on package sources
+	generate    generate Go files by processing source
+	get         download and install packages and dependencies
+	install     compile and install packages and dependencies
+	list        list packages
+	run         compile and run Go program
+	test        test packages
+	tool        run specified go tool
+	version     print Go version
+	vet         run go tool vet on packages
 
 * Hello, Go
 
@@ -158,6 +155,23 @@ And my favorite if you are a VIM user:
 For simple programs or examples:
 
 .link http://play.golang.org Go Playground
+
+* Get the Guru!
+
+.link https://godoc.org/golang.org/x/tools/cmd/guru Go Guru
+
+	callees     ->  show possible targets of selected function call
+	callers     ->  show possible callers of selected function
+	callstack   ->  show path from callgraph root to selected function
+	definition  ->  show declaration of selected identifier
+	describe    ->  describe selected syntax: definition, methods, etc
+	freevars    ->  show free variables of selection
+	implements  ->  show 'implements' relation for selected type or method
+	peers       ->  show send/receive corresponding to selected channel op
+	pointsto    ->  show variables the selected pointer may point to
+	referrers   ->  show all refs to thing denoted by selected identifier
+	what        ->  show basic information about the selected syntax node
+	whicherrs   ->  show possible values of the selected error variable
 
 * Installing Go
 
